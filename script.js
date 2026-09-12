@@ -17,6 +17,7 @@ const button = document.querySelector('button')
 
 button.addEventListener('click', () => {
     let answer = prompt('Number of squares')
+
     if (answer > 0 && answer <= 100) {
         div.innerHTML = ''
         div.style.width = `${50 * answer}px`
@@ -27,7 +28,10 @@ button.addEventListener('click', () => {
         const allDiv = document.querySelectorAll('.container div')
         allDiv.forEach(element => {
             element.addEventListener('mouseenter', () => {
-                element.style.backgroundColor = 'black'
+                const red = Math.floor(Math.random() * 256)
+                const green = Math.floor(Math.random() * 256)
+                const blue = Math.floor(Math.random() * 256)
+                element.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
             })
         })
     }
