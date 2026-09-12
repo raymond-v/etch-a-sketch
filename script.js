@@ -20,9 +20,11 @@ button.addEventListener('click', () => {
 
     if (answer > 0 && answer <= 100) {
         div.innerHTML = ''
-        div.style.width = `${50 * answer}px`
         for (let i = 0; i < answer * answer; i++) {
             let newDiv = document.createElement('div')
+            newDiv.style.width = `${800 / answer}px`
+            newDiv.style.height = `${800 / answer}px`
+            newDiv.dataset.opacity = 0
             div.appendChild(newDiv)
         }
         const allDiv = document.querySelectorAll('.container div')
@@ -31,7 +33,11 @@ button.addEventListener('click', () => {
                 const red = Math.floor(Math.random() * 256)
                 const green = Math.floor(Math.random() * 256)
                 const blue = Math.floor(Math.random() * 256)
-                element.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
+                
+                let opacity = Math.min(1, Number(element.dataset.opacity) + 0.1)
+                element.dataset.opacity = opacity
+
+                element.style.backgroundColor = `rgba(${red}, ${green}, ${blue}, ${opacity})`
             })
         })
     }
