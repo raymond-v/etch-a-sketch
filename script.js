@@ -19,6 +19,7 @@ button.addEventListener('click', () => {
     let answer = prompt('Number of squares')
     if (answer) {
         div.innerHTML = ''
+        div.style.width = `${50 * answer}px`
         for (let i = 0; i < answer * answer; i++) {
             let newDiv = document.createElement('div')
             div.appendChild(newDiv)
